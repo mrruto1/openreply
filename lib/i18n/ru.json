@@ -468,5 +468,11 @@
   "{name} Campaign Report": "Отчёт по кампании «{name}»",
   "{type} post": "Пост {type}",
   "”": "»",
-  "← Campaigns": "← Кампании"
+  "← Campaigns": "← Кампании",
+  "Create a read & write workspace key for {days} days? Anyone with this key can create, change, pause and delete your campaigns.": "Создать ключ рабочего пространства с правами чтения и записи на {days} дн.? Любой, у кого есть этот ключ, сможет создавать, изменять, приостанавливать и удалять ваши кампании.",
+  "Workspace-scoped keys. Read-only keys can read campaigns, Instagram accounts, posts and DM logs. Read & write keys can also create, update, pause and delete campaigns. No key can send messages directly. Only admins and owners can manage keys.": "Ключи в пределах рабочего пространства. Ключи только для чтения дают доступ к кампаниям, аккаунтам Instagram, публикациям и журналам DM. Ключи чтения и записи также позволяют создавать, обновлять, приостанавливать и удалять кампании. Ни один ключ не может напрямую отправлять сообщения. Управлять ключами могут только администраторы и владельцы.",
+  "Key access": "Доступ ключа",
+  "Read only (campaigns:read)": "Только чтение (campaigns:read)",
+  "Read & write (campaigns:read, campaigns:write)": "Чтение и запись (campaigns:read, campaigns:write)",
+  "Give read & write keys only to agents you trust to manage campaigns. Campaigns created through the API start paused unless they set isActive.": "Выдавайте ключи чтения и записи только агентам, которым доверяете управление кампаниями. Кампании, созданные через API, запускаются приостановленными, если не задан isActive."
 }

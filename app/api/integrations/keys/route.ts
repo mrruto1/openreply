@@ -18,7 +18,9 @@ export async function POST(request: Request) {
     checkOrigin(request);
     const context = await getCurrentWorkspaceContext();
     if (!context || !canManageWorkspace(context.role)) throw new ApiError("Admin role required", 403);
-    const input = z.object({ name: z.string().trim().min(1).max(100), scopes: z.array(z.enum(SERVICE_SCOPES)).min(1).max(1),
+    const input = z.object({ name: z.string().trim().min(1).max(100), scopes: z.array(z.enum(SERVICE_SCOPES)).min(1).max(2)
+        // Write keys always read too: an agent must be able to see what it changes.
+        .refine(scopes => scopes.includes("campaigns:read"), "campaigns:read is required"),
       days: z.number().int().min(1).max(90).default(30) }).strict().safeParse(await readJson(request));
     if (!input.success) throw new ApiError("Invalid key configuration");
     const token = newServiceToken();

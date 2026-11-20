@@ -468,5 +468,11 @@
   "{name} Campaign Report": "Relatório da campanha {name}",
   "{type} post": "Publicação {type}",
   "”": "”",
-  "← Campaigns": "← Campanhas"
+  "← Campaigns": "← Campanhas",
+  "Create a read & write workspace key for {days} days? Anyone with this key can create, change, pause and delete your campaigns.": "Criar uma chave de leitura e escrita do workspace por {days} dias? Qualquer pessoa com esta chave pode criar, alterar, pausar e excluir suas campanhas.",
+  "Workspace-scoped keys. Read-only keys can read campaigns, Instagram accounts, posts and DM logs. Read & write keys can also create, update, pause and delete campaigns. No key can send messages directly. Only admins and owners can manage keys.": "Chaves restritas ao workspace. Chaves somente leitura podem ler campanhas, contas do Instagram, publicações e registros de DM. Chaves de leitura e escrita também podem criar, atualizar, pausar e excluir campanhas. Nenhuma chave pode enviar mensagens diretamente. Somente administradores e proprietários podem gerenciar chaves.",
+  "Key access": "Acesso da chave",
+  "Read only (campaigns:read)": "Somente leitura (campaigns:read)",
+  "Read & write (campaigns:read, campaigns:write)": "Leitura e escrita (campaigns:read, campaigns:write)",
+  "Give read & write keys only to agents you trust to manage campaigns. Campaigns created through the API start paused unless they set isActive.": "Dê chaves de leitura e escrita apenas a agentes em quem você confia para gerenciar campanhas. Campanhas criadas pela API começam pausadas, a menos que definam isActive."
 }

@@ -3,6 +3,12 @@ import { authenticateService } from "@/lib/integrations/auth";
 import { apiError, ApiError, checkOrigin, readJson } from "@/lib/integrations/http";
 import { callTool, listTools } from "@/lib/integrations/mcp";
 
+function instructions(scopes: string[]) {
+  const base = "Workspace-scoped OpenReply campaigns. Read tools: list_campaigns, get_campaign, get_campaign_stats, list_instagram_accounts, list_instagram_posts, list_dm_logs.";
+  if (!scopes.includes("campaigns:write")) return `${base} This key is read-only: no tool can modify campaigns or send messages.`;
+  return `${base} Write tools (campaigns:write): create_campaign, update_campaign, toggle_campaign, delete_campaign. Always pass an explicit instagramAccountId from list_instagram_accounts and a postId from list_instagram_posts; never reuse an id from another account. New campaigns start paused unless isActive is true. Write tools change campaign configuration only; no tool sends messages directly.`;
+}
+
 const versions = ["2025-03-26", "2025-06-18", "2025-11-25"];
 const rpcSchema = z.object({ jsonrpc: z.literal("2.0"), id: z.union([z.string(), z.number()]).optional(), method: z.string(), params: z.unknown().optional() });
 export async function GET(request: Request) {
@@ -29,7 +35,7 @@ export async function POST(request: Request) {
       const params = z.object({ protocolVersion: z.string(), capabilities: z.object({}).passthrough(), clientInfo: z.object({ name: z.string(), version: z.string() }).passthrough() }).safeParse(rpc.params);
       if (!params.success) return Response.json({ jsonrpc: "2.0", id: rpc.id, error: { code: -32602, message: "Invalid initialize parameters" } });
       result = { protocolVersion: versions.includes(params.data.protocolVersion) ? params.data.protocolVersion : versions.at(-1),
-        capabilities: { tools: { listChanged: false } }, serverInfo: { name: "openreply", version: "1.0.0" }, instructions: "Read-only and workspace-scoped. No tool can modify campaigns or send messages." };
+        capabilities: { tools: { listChanged: false } }, serverInfo: { name: "openreply", version: "1.0.0" }, instructions: instructions(context.scopes) };
     } else if (rpc.method === "ping") result = {};
     else if (rpc.method === "tools/list") result = { tools: listTools(context) };
     else if (rpc.method === "tools/call") {
