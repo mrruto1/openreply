@@ -468,5 +468,11 @@
   "{name} Campaign Report": "{name} 活動報表",
   "{type} post": "{type} 貼文",
   "”": "」",
-  "← Campaigns": "← 返回活動列表"
+  "← Campaigns": "← 返回活動列表",
+  "Create a read & write workspace key for {days} days? Anyone with this key can create, change, pause and delete your campaigns.": "要建立有效期 {days} 天的讀寫工作區金鑰嗎？任何持有此金鑰的人都能建立、修改、暫停和刪除你的活動。",
+  "Workspace-scoped keys. Read-only keys can read campaigns, Instagram accounts, posts and DM logs. Read & write keys can also create, update, pause and delete campaigns. No key can send messages directly. Only admins and owners can manage keys.": "限定於工作區的金鑰。唯讀金鑰可讀取活動、Instagram 帳號、貼文和私訊紀錄。讀寫金鑰還能建立、更新、暫停和刪除活動。任何金鑰都無法直接傳送訊息。只有管理員和擁有者可以管理金鑰。",
+  "Key access": "金鑰權限",
+  "Read only (campaigns:read)": "唯讀（campaigns:read）",
+  "Read & write (campaigns:read, campaigns:write)": "讀寫（campaigns:read、campaigns:write）",
+  "Give read & write keys only to agents you trust to manage campaigns. Campaigns created through the API start paused unless they set isActive.": "請只將讀寫金鑰交給你信任能管理活動的代理。透過 API 建立的活動預設為暫停，除非設定了 isActive。"
 }
